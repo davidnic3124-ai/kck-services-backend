@@ -51,12 +51,23 @@ for origin in default_origins:
     if origin not in origins:
         origins.append(origin)
 
+origins = [origin.strip().rstrip("/") for origin in settings.allowed_origins if origin.strip()]
+
+default_origins = [
+    "https://kck-services-frontend.davidnic3124.workers.dev",
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+for origin in default_origins:
+    if origin not in origins:
+        origins.append(origin)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allows OPTIONS, GET, POST, PUT, DELETE, PATCH, etc.
-    allow_headers=["*"],  # Allows all incoming headers during preflight
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/", include_in_schema=False)
