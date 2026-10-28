@@ -4,4 +4,4 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "https://placeholder.su
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "placeholder-key";
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
-export const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+export const API_BASE = "https://kck-services-backend-3.onrender.com";
